@@ -1,0 +1,10 @@
+﻿{
+    "database": {
+        "host": "localhost",
+        "port": 3306,
+        "user": "root",
+        "password": "my-secret-pw",
+        "database": "urlshortner"
+    },
+    "secret": "hFTcFwp@nr9n.AQ`Gy`1l&%(I*bP4k=_Qpx~TUy-j`muk@JsswT/pvx2UG@q%36"
+}
