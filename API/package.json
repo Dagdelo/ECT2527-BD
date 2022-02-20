@@ -9,7 +9,8 @@
     },
     "scripts": {
         "start": "node ./server.js",
-        "start:dev": "nodemon ./server.js"
+        "start:dev": "nodemon ./server.js",
+        "deploy:local:sql:container": "docker run -d --name some-sql -e MYSQL_ROOT_PASSWORD=my-secret-pw -e MYSQL_DATABASE=urlshortner -p 3306:3306 mysql:latest"
     },
     "dependencies": {
         "bcryptjs": "^2.4.3",

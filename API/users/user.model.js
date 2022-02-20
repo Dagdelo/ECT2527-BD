@@ -1,15 +1,7 @@
 const { DataTypes } = require('sequelize');
+const db = require('_helpers/db');
 
-module.exports = model;
-
-function model(sequelize) {
-    const attributes = {
-        firstName: { type: DataTypes.STRING, allowNull: false },
-        lastName: { type: DataTypes.STRING, allowNull: false },
-        username: { type: DataTypes.STRING, allowNull: false },
-        hash: { type: DataTypes.STRING, allowNull: false }
-    };
-
+module.exports = (sequelize) => {
     const options = {
         defaultScope: {
             // exclude hash by default
@@ -20,6 +12,14 @@ function model(sequelize) {
             withHash: { attributes: {}, }
         }
     };
-
-    return sequelize.define('User', attributes, options);
-}
+    const User = sequelize.define('User', {
+        firstName: { type: DataTypes.STRING, allowNull: false },
+        lastName: { type: DataTypes.STRING, allowNull: false },
+        username: { type: DataTypes.STRING, allowNull: false },
+        hash: { type: DataTypes.STRING, allowNull: false }
+    }, options);
+    User.associate = function() {
+        User.hasMany(db.Url, { foreignKey: "urlId" })
+    }
+    return User;
+};
